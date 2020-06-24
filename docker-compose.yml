@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  app:
+    restart: unless-stopped
+    build: ./app
+    container_name: stock.app
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:80"
+  mysql:
+    restart: unless-stopped
+    image: mysql:8.0
+    container_name: stock.db
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=stock
+      - MYSQL_USER=stock
+      - MYSQL_PASSWORD=stock
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
