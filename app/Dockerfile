@@ -13,7 +13,7 @@ FROM python:3.8-slim
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app/stock
+WORKDIR /app
 
 COPY --from=builder /app/requirements.txt /app/requirements.txt
 
